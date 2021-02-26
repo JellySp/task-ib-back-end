@@ -29,9 +29,9 @@ public class CustomerController {
         return customerRepository.findAll();
     }
 
-    @GetMapping("/findCustomerByPersonalCode/{personalCode}")
-    public Customer findByPersonalCode(@PathVariable String personalCode) {
-        return customerRepository.findByPersonalCode(personalCode);
+    @GetMapping("/findByPic")
+    public Customer findByPic(@RequestParam String pic) {
+        return customerRepository.findByPic(pic);
     }
 
 

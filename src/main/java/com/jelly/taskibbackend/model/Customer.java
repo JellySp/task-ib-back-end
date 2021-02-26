@@ -19,6 +19,6 @@ public class Customer {
     private String lastName;
 
     @Column(unique = true)
-    private String personalCode;
+    private String pic; //personal identification code
     private int creditModifier;
 }
