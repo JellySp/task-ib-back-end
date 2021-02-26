@@ -13,10 +13,12 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     private String firstName;
     private String lastName;
+
+    @Column(unique = true)
     private String personalCode;
     private int creditModifier;
 }
