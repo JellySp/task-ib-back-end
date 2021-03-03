@@ -4,3 +4,5 @@ insert into customer (credit_modifier, first_name, last_name, pic) values (300,'
 insert into customer (credit_modifier, first_name, last_name, pic) values (1000,'Dana', 'Scully', '49002010998')
 insert into customer (credit_modifier, first_name, last_name, pic) values (0,'Test', 'Debt', '00000000000')
 insert into customer (credit_modifier, first_name, last_name, pic) values (1000,'Test', 'Rich', '11111111111')
+insert into customer (credit_modifier, first_name, last_name, pic) values (34,'Test', 'JustEnough', '00000000001')
+insert into customer (credit_modifier, first_name, last_name, pic) values (33,'Test', 'NotEnough', '00000000002')
