@@ -14,6 +14,7 @@ public class LoanParametersChecker {
         // I don't want to put all the below methods into
         // one for readability concerns
         // TODO find a better way
+
         return isCorrectCreditScore(customer, loanAmount, loanPeriod) && isCorrectLoanAmount(loanAmount) && isCorrectLoanPeriod(loanPeriod);
     }
 
