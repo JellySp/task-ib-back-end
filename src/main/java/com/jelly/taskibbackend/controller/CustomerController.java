@@ -22,7 +22,7 @@ public class CustomerController {
     @PostMapping("/addCustomer")
     public ResponseEntity addCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
     @GetMapping("/findAllCustomers")
