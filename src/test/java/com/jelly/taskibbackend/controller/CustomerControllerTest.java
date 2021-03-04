@@ -15,9 +15,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
-
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
-import static org.junit.jupiter.api.Assertions.*;
 
 @WebMvcTest(CustomerController.class)
 class CustomerControllerTest {

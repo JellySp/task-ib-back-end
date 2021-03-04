@@ -5,7 +5,6 @@ import com.jelly.taskibbackend.model.Customer;
 import com.jelly.taskibbackend.repository.CustomerRepository;
 import com.jelly.taskibbackend.utils.LoanParametersChecker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
