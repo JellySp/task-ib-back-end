@@ -30,3 +30,4 @@ public class LoanParametersChecker {
         return loanPeriod >= 12 && loanPeriod <= 60;
     }
 }
+
