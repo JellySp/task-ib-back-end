@@ -40,8 +40,8 @@ class CustomerControllerTest {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders.post("/addCustomer")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"firstName\": \"Test\", \"lastName\": \"AddUser\", \"pic\":\"39000000000\", \"creditModifier\": \"300\"}"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"firstName\": \"Test\", \"lastName\": \"AddUser\", \"pic\":\"39000000000\", \"creditModifier\": \"300\"}"))
                 .andExpect(MockMvcResultMatchers.status().isCreated());
 
     }
@@ -61,7 +61,7 @@ class CustomerControllerTest {
     @Test
     void testFindCustomerByPic() throws Exception {
         when(customerRepository.findByPic("39000000000"))
-                .thenReturn(new Customer(1L,"Test","Pic","39000000000",0));
+                .thenReturn(new Customer(1L, "Test", "Pic", "39000000000", 0));
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/findByPic?pic=39000000000"))
@@ -72,7 +72,7 @@ class CustomerControllerTest {
     @Test
     void testVerifyCustomerDataWithModifierZero() throws Exception {
         when(customerRepository.findByPic("00000000000"))
-                .thenReturn(new Customer(1L,"Test","Zero","00000000000",0));
+                .thenReturn(new Customer(1L, "Test", "Zero", "00000000000", 0));
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/verifyCustomerData?pic=00000000000&loanAmount=2000&loanPeriod=60"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -83,7 +83,7 @@ class CustomerControllerTest {
     @Test
     void testVerifyCustomerDataWithModifierThirtyThree() throws Exception {
         when(customerRepository.findByPic("00000000000"))
-                .thenReturn(new Customer(1L,"Test","Zero","00000000000",33));
+                .thenReturn(new Customer(1L, "Test", "Zero", "00000000000", 33));
 
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/verifyCustomerData?pic=00000000000&loanAmount=2000&loanPeriod=60"))
@@ -95,7 +95,7 @@ class CustomerControllerTest {
     @Test
     void testVerifyCustomerDataWithModifierThirtyFour() throws Exception {
         when(customerRepository.findByPic("00000000000"))
-                .thenReturn(new Customer(1L,"Test","Zero","00000000000",34));
+                .thenReturn(new Customer(1L, "Test", "Zero", "00000000000", 34));
 
         // tests for both maximum and minimum sums and periods
 
@@ -154,7 +154,6 @@ class CustomerControllerTest {
                 .thenReturn(new Customer(1L, "Test", "Zero", "00000000000", 300));
 
         // tests for both maximum and minimum sums and periods
-
 
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/verifyCustomerData?pic=00000000000&loanAmount=10000&loanPeriod=60"))
@@ -236,6 +235,4 @@ class CustomerControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$").value(false));
 
     }
-
-
 }

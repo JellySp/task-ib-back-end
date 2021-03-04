@@ -48,14 +48,9 @@ public class CustomerController {
         // score after applying for loan to
         // prevent the customer from injecting
         // bad values into their browser
-
+        System.out.println("testverify");
         Customer customer = customerRepository.findByPic(pic);
+        System.out.println(LoanParametersChecker.isCorrectParameters(customer,loanAmount,loanPeriod));
         return LoanParametersChecker.isCorrectParameters(customer, loanAmount, loanPeriod);
     }
-
-
-
-
-
-
 }
