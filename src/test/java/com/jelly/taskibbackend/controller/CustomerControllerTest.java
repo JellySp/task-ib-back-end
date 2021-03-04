@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -33,6 +34,17 @@ class CustomerControllerTest {
     @Test
     void shouldCreateMockMvc() {
         assertNotNull(mockMvc);
+    }
+
+    @Test
+    void testAddCustomer() throws Exception {
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders.post("/addCustomer")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"firstName\": \"Test\", \"lastName\": \"AddUser\", \"pic\":\"39000000000\", \"creditModifier\": \"300\"}"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
     }
 
     @Test
