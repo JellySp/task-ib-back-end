@@ -43,7 +43,7 @@ class CustomerControllerTest {
                 .perform(MockMvcRequestBuilders.post("/addCustomer")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"firstName\": \"Test\", \"lastName\": \"AddUser\", \"pic\":\"39000000000\", \"creditModifier\": \"300\"}"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+                .andExpect(MockMvcResultMatchers.status().isCreated());
 
     }
 

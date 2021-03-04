@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -19,10 +20,16 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
+    // This isnt called anywhere in the front end app
+    // It's only here for my own testing purposes and
+    // I feel this would be implemented later in a real
+    // world case
     @PostMapping("/addCustomer")
-    public ResponseEntity addCustomer(@RequestBody Customer customer) {
+    public ResponseEntity addCustomer(@RequestBody Customer customer, UriComponentsBuilder uriComponentsBuilder) {
         customerRepository.save(customer);
-        return ResponseEntity.ok(HttpStatus.CREATED);
+        return ResponseEntity
+                .created(uriComponentsBuilder.path("/customers/{pic}").build(customer.getPic()))
+                .build();
     }
 
     @GetMapping("/findAllCustomers")
