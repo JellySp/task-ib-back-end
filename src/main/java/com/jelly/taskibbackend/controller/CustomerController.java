@@ -41,13 +41,10 @@ public class CustomerController {
         return customerRepository.findByPic(pic);
     }
 
+    // verifies customer data after submitting their application to check for data tampering
     @GetMapping("/verifyCustomerData")
     public Boolean verifyCustomerData(@RequestParam String pic,@RequestParam double loanAmount, @RequestParam double loanPeriod) {
 
-        // this functions rechecks the credit
-        // score after applying for loan to
-        // prevent the customer from injecting
-        // bad values into their browser
         System.out.println("testverify");
         Customer customer = customerRepository.findByPic(pic);
         System.out.println(LoanParametersChecker.isCorrectParameters(customer,loanAmount,loanPeriod));
