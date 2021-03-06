@@ -46,7 +46,8 @@ public class CustomerController {
     @GetMapping("/checkIsEligibleForAnyLoan")
     public Boolean isEligibleForAnyLoan(@RequestParam String pic) {
         Customer customer = customerRepository.findByPic(pic);
-        return LoanCalculator.isEligibleForAnyLoan(customer.getCreditModifier());
+        LoanCalculator loanCalculator = new LoanCalculator();
+        return loanCalculator.isEligibleForAnyLoan(customer.getCreditModifier());
 
     }
 }

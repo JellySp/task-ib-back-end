@@ -8,8 +8,9 @@ class LoanCalculatorTest {
 
     @Test
     void testIsEligibleForAnyLoan() {
-        assertTrue(LoanCalculator.isEligibleForAnyLoan(34));
-        assertFalse(LoanCalculator.isEligibleForAnyLoan(33));
+        LoanCalculator loanCalculator = new LoanCalculator();
+        assertTrue(loanCalculator.isEligibleForAnyLoan(34));
+        assertFalse(loanCalculator.isEligibleForAnyLoan(33));
     }
 
 }
