@@ -1,4 +1,4 @@
-# Front end for IB task app
+# Back end for IB task app
 
 ## Configuration of main development machine
 <ul>
