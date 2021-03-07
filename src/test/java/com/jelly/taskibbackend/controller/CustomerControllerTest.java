@@ -1,6 +1,5 @@
 package com.jelly.taskibbackend.controller;
 
-import com.jelly.taskibbackend.exception.InvalidLoanParametersException;
 import com.jelly.taskibbackend.model.Customer;
 import com.jelly.taskibbackend.repository.CustomerRepository;
 import org.hamcrest.Matchers;
@@ -17,7 +16,6 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(CustomerController.class)
