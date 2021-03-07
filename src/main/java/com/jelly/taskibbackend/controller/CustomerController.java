@@ -24,7 +24,7 @@ public class CustomerController {
     // I feel this would be implemented later in a real
     // world case
     @PostMapping("/addCustomer")
-    public ResponseEntity addCustomer(@RequestBody Customer customer, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<?> addCustomer(@RequestBody Customer customer, UriComponentsBuilder uriComponentsBuilder) {
 
         customerRepository.save(customer);
         return ResponseEntity
@@ -48,6 +48,12 @@ public class CustomerController {
         Customer customer = customerRepository.findByPic(pic);
         LoanCalculator loanCalculator = new LoanCalculator();
         return loanCalculator.isEligibleForAnyLoan(customer.getCreditModifier());
+    }
 
+    @GetMapping("/checkCustomerExistsOnDataBase")
+    public Boolean customerExistsOnDataBase(@RequestParam String pic) {
+        Customer customer = customerRepository.findByPic(pic);
+
+        return customer != null;
     }
 }

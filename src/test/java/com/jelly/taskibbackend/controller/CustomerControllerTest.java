@@ -73,7 +73,7 @@ class CustomerControllerTest {
     @Test
     void testIsEligibleForAnyLoan() throws Exception {
         when(customerRepository.findByPic("00000000034"))
-                .thenReturn(new Customer(1L, "Test", "ThirtyThree", "00000000034", 34));
+                .thenReturn(new Customer(1L, "Test", "ThirtyFour", "00000000034", 34));
 
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/checkIsEligibleForAnyLoan?pic=00000000034"))
@@ -87,6 +87,28 @@ class CustomerControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").value(false));
 
+        when(customerRepository.findByPic("00000000000"))
+                .thenReturn(new Customer(1L, "Test", "ThirtyThree", "00000000000", 0));
+
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/checkIsEligibleForAnyLoan?pic=00000000000"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").value(false));
+
+
+    }
+
+    @Test
+    void testCustomerExistsOnDataBase() throws Exception {
+        when(customerRepository.findByPic("00000000000"))
+                .thenReturn(new Customer(1L, "Test", "ThirtyThree", "00000000000", 0));
+
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/checkCustomerExistsOnDataBase?pic=00000000000"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").value(true));
+
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/checkCustomerExistsOnDataBase?pic=00000000001"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").value(false));
 
     }
 
